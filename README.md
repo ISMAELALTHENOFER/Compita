@@ -10,9 +10,8 @@ Después de clonar este repositorio, instalá Compita para el runtime que está 
 4. Anteponé el frontmatter exacto de este README y usá como cuerpo el protocolo completo de `compita.md` raíz, sin resumirlo ni agregar frontmatter al cuerpo.
 5. Recargá o reiniciá el runtime si corresponde.
 6. Verificá que el agente sea descubierto por el mecanismo normal del runtime.
-7. Antes de usar una sesión remota, credencial o MCP, obtené aprobación explícita del usuario para el destino, la operación y la sesión o credencial.
 
-Creá solo el adaptador del runtime activo, nunca los tres. Los datos de conexión y credenciales MCP de GitLab, Jira/Tempo y Oracle son específicos del entorno: no los inventes. Los MCP autorizados deben ser de solo lectura. La inspección semántica de ZIP o binarios y publicar, aprobar o comentar remotamente no están disponibles.
+Creá solo el adaptador del runtime activo, nunca los tres. Los datos de conexión y credenciales MCP de GitLab, Jira/Tempo y Oracle son específicos del entorno: no los inventes ni los inspecciones. Las conexiones configuradas para MCP de solo lectura están autorizadas por defecto exclusivamente para consultas de solo lectura; no requieren aprobación previa. La inspección semántica de ZIP o binarios y publicar, aprobar o comentar remotamente no están disponibles.
 
 ## Adaptador único por runtime
 
@@ -75,4 +74,4 @@ Recargá o reiniciá Cursor si no descubre el agente.
 - Existe un solo adaptador en la ruta del runtime activo; en OpenCode y Claude Code, es local o global, no ambos. Cursor usa solo el alcance del proyecto.
 - El adaptador contiene el frontmatter exacto anterior seguido del protocolo raíz completo.
 - El runtime reconoce el agente `compita`.
-- No se usó conexión, sesión ni credencial remota sin autorización explícita.
+- Las consultas remotas se realizaron solo mediante MCP configurados de solo lectura, sin mutaciones remotas ni inspección o invención de credenciales.

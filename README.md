@@ -11,7 +11,7 @@ Después de clonar este repositorio, instalá Compita para el runtime que está 
 5. Recargá o reiniciá el runtime si corresponde.
 6. Verificá que el agente sea descubierto por el mecanismo normal del runtime.
 
-Creá solo el adaptador del runtime activo, nunca los tres. Los datos de conexión y credenciales MCP de GitLab, Jira/Tempo y Oracle son específicos del entorno: no los inventes ni los inspecciones. Las conexiones configuradas para MCP de solo lectura están autorizadas por defecto exclusivamente para consultas de solo lectura; no requieren aprobación previa. La inspección semántica de ZIP o binarios y publicar, aprobar o comentar remotamente no están disponibles.
+Creá solo el adaptador del runtime activo, nunca los tres. Los datos de conexión y credenciales MCP de GitLab, Jira/Tempo y Oracle son específicos del entorno: no los inventes ni los inspecciones. Las conexiones configuradas para MCP de solo lectura están autorizadas por defecto exclusivamente para consultas de solo lectura; no requieren aprobación previa. Los ZIP compatibles pueden inspeccionarse mediante la secuencia segura definida en `compita.md`; otros binarios no. Publicar, aprobar o comentar remotamente no está disponible.
 
 ## Adaptador único por runtime
 

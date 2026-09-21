@@ -45,9 +45,9 @@ Usa exactamente uno de estos estados por criterio y como recomendación final:
 - **NO VERIFICABLE**: evidencia insuficiente para un alcance aplicable.
 - **REQUIERE MODIFICACIONES**: una corrección concreta resolvería el incumplimiento.
 
-Para todo estado distinto de **APROBADO**, indica faltante o corrección, ubicación, evidencia e impacto. Clasifica como **PROBADO**, **NO PROBADO** o **NO VERIFICABLE** solo pruebas o validaciones de Desarrollo; las exigidas explícitamente a Desarrollo antes del pase conservan su obligatoriedad y afectan la preparación.
+Para todo estado distinto de **APROBADO**, indica faltante o corrección, ubicación, evidencia e impacto. Una inspección estática del código fuente del MR puede establecer un criterio cuando el cambio y su efecto son directos, trazables y no dependen de ejecución, ambiente o datos. Repórtala como **Verified statically**; nunca como prueba ejecutada. La ausencia de CI o pipeline no bloquea por sí sola si todos los criterios aplicables quedan **APROBADO** mediante esa evidencia. Registra **Not executed** como limitación residual de evidencia ejecutable. Mantén **NO VERIFICABLE** cuando la inspección estática no pueda establecer el comportamiento, y bloquea por criterios sin verificar, defectos de código demostrados, alcance inseguro o artefactos de depuración.
 
-Recomienda **APROBADO** solo si todos los criterios aplicables de Desarrollo están aprobados, no quedan bloqueantes ni críticos de Desarrollo y sus pruebas requeridas están **PROBADAS**. La falta de evidencia material de Desarrollo exige **NO VERIFICABLE**; un incumplimiento o corrección pendiente exige **NO APROBADO** o **REQUIERE MODIFICACIONES**. Esos tres estados bloquean el pase.
+Recomienda **APROBADO** solo si todos los criterios aplicables de Desarrollo están aprobados y no quedan bloqueantes ni críticos de Desarrollo. Una prueba explícitamente exigida que no pueda sustituirse por inspección estática conserva su obligatoriedad. La falta de evidencia material de Desarrollo exige **NO VERIFICABLE**; un incumplimiento o corrección pendiente exige **NO APROBADO** o **REQUIERE MODIFICACIONES**. Esos tres estados bloquean el pase.
 
 Ni el estado ni la falta de comentarios, adjuntos, resultados o evidencia de regresión de tareas solo QA generan estados no aprobatorios, bloqueos, hallazgos críticos ni degradan la recomendación. La ejecución funcional o de regresión de QA ocurre después del pase; menciónala solo como contexto breve, no bloqueante y fuera de alcance. Tras una corrección informada, vuelve a recolectar toda la evidencia vigente de Desarrollo y regenera el informe; no reutilices la decisión anterior.
 
@@ -75,7 +75,8 @@ Aptitud: {apto para pasar de Desarrollo a Test | pase bloqueado}; evidencia deci
 - **{título}** — `artefacto:ubicación`; evidencia; impacto; corrección requerida.
 
 ### Pruebas de Desarrollo y limitaciones que afectan la decisión
-- Pruebas de Desarrollo: {PROBADO | NO PROBADO | NO VERIFICABLE}; {evidencia y motivo}.
+- Verified statically: {criterios establecidos por inspección de fuente, con artefacto:ubicación, o No aplica}.
+- Not executed: {evidencia ejecutable disponible o limitación residual, incluido CI/pipeline ausente}.
 - {limitación verificable que afecta la decisión}
 
 ### Comentario para GitLab (Preview)
